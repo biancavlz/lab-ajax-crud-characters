@@ -6,7 +6,7 @@ class APIHandler {
   getFullList () {
     axios.get(`${this.BASE_URL}/characters`).then(response => {
       const { data } = response
-      document.querySelector('.characters-container > div:first-child').remove()
+      let htmlStr = ''
 
       data.forEach(character => {
         const {id, name, occupation, weapon, cartoon} = character
@@ -20,16 +20,17 @@ class APIHandler {
           <div class="weapon">${weapon}</div>
         </div>`;
 
-      document.querySelector('.characters-container').innerHTML += newCharacterHTML;
+      htmlStr += newCharacterHTML;
       })
+      document.querySelector('.characters-container').innerHTML = htmlStr;
     })
   }
 
   getOneRegister(id) {
+    let htmlStr = ''
+
     axios.get(`${this.BASE_URL}/characters/${id}`).then(response => {
       const { data } = response
-      document.querySelector('.characters-container > div:first-child').remove()
-
       console.log(data)
         const {id, name, occupation, weapon, cartoon} = data
 
@@ -40,8 +41,8 @@ class APIHandler {
           <div class="cartoon">${cartoon}</div>
           <div class="weapon">${weapon}</div>
         </div>`;
+        document.querySelector('.characters-container').innerHTML = newCharacterHTML;
 
-      document.querySelector('.characters-container').innerHTML += newCharacterHTML;
     })
   }
 
