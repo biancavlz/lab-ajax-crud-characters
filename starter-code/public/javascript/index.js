@@ -8,6 +8,7 @@ $(document).ready( () => {
   
   document.getElementById('fetch-one').onclick = function(){
     
+    return charactersAPI.getOneRegister()
   }
   
   document.getElementById('delete-one').onclick = function(){
