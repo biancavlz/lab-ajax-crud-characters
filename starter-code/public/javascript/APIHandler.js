@@ -29,7 +29,7 @@ class APIHandler {
     axios.get(`${this.BASE_URL}/characters/${id}`).then(response => {
       const { data } = response
       document.querySelector('.characters-container > div:first-child').remove()
-      
+
       console.log(data)
         const {id, name, occupation, weapon, cartoon} = data
 
@@ -67,10 +67,15 @@ class APIHandler {
     })
   }
 
-  deleteOneRegister () {
+  deleteOneRegister (id) {
     axios.delete(`${this.BASE_URL}/characters/${id}`)
       .then(response => {
+
+        const { data } = response
+       
+
         console.log('deleted successfully!!')
+
 
       }).catch(err => {
       console.error(err);
