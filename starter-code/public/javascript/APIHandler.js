@@ -22,15 +22,31 @@ class APIHandler {
         const {id, name, occupation, weapon, cartoon} = character
         console.log(character)
       })
+    }).catch(err => {
+      console.error(err);
     })
   }
 
   createOneRegister () {
+    axios.post(`${this.BASE_URL}/characters`, {name, occupation, weapon, cartoon})
+      .then(response => {
+        const { data } = response
+        const { id, name, occupation, weapon, cartoon } = character
 
+      }).catch(err => {
+      console.error(err);
+    })
   }
 
-  updateOneRegister () {
+  updateOneRegister (id) {
+    axios.put(`${this.BASE_URL}/characters/${id}`, {name, occupation, weapon, cartoon})
+      .then(response => {
+        const { data } = response
+        const { id, name, occupation, weapon, cartoon } = character
 
+      }).catch(err => {
+      console.error(err);
+    })
   }
 
   deleteOneRegister () {
