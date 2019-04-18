@@ -28,13 +28,20 @@ class APIHandler {
   getOneRegister(id) {
     axios.get(`${this.BASE_URL}/characters/${id}`).then(response => {
       const { data } = response
+      document.querySelector('.characters-container > div:first-child').remove()
+      
+      console.log(data)
+        const {id, name, occupation, weapon, cartoon} = data
 
-      data.find(character => {
-        const {id, name, occupation, weapon, cartoon} = character
-        console.log(character)
-      })
-    }).catch(err => {
-      console.error(err);
+        const newCharacterHTML = `
+        <div class="character-info" id=${id}>
+          <div class="name">${name}</div>
+          <div class="occupation">${occupation}</div>
+          <div class="cartoon">${cartoon}</div>
+          <div class="weapon">${weapon}</div>
+        </div>`;
+
+      document.querySelector('.characters-container').innerHTML += newCharacterHTML;
     })
   }
 

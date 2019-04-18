@@ -8,7 +8,9 @@ $(document).ready( () => {
   
   document.getElementById('fetch-one').onclick = function(){
     
-    return charactersAPI.getOneRegister()
+    const id = document.querySelector('[name="character-id"]').value
+    console.log(id)
+    return charactersAPI.getOneRegister(id)
   }
   
   document.getElementById('delete-one').onclick = function(){
