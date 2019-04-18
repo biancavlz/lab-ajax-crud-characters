@@ -50,6 +50,12 @@ class APIHandler {
   }
 
   deleteOneRegister () {
+    axios.delete(`${this.BASE_URL}/characters/${id}`)
+      .then(response => {
+        console.log('deleted successfully!!')
 
+      }).catch(err => {
+      console.error(err);
+    })
   }
 }
