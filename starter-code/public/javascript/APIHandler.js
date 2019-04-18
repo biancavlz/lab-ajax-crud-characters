@@ -6,10 +6,21 @@ class APIHandler {
   getFullList () {
     axios.get(`${this.BASE_URL}/characters`).then(response => {
       const { data } = response
+      document.querySelector('.characters-container > div:first-child').remove()
 
       data.forEach(character => {
         const {id, name, occupation, weapon, cartoon} = character
         console.log(character)
+
+        const newCharacterHTML = `
+        <div class="character-info" id=${id}>
+          <div class="name">${name}</div>
+          <div class="occupation">${occupation}</div>
+          <div class="cartoon">${cartoon}</div>
+          <div class="weapon">${weapon}</div>
+        </div>`;
+
+      document.querySelector('.characters-container').innerHTML += newCharacterHTML;
       })
     })
   }
